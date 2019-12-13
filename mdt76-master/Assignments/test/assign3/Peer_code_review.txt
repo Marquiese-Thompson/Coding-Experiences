@@ -1,0 +1,28 @@
+reviewer: LW1222, reviewed code submitted by mdt76
+
+Section 1. General code quality and coding style. [5 points]
+	Very clean style.  Quite readable and easy to follow.  Properly condensed and tasks are divided up well and notation is good.  The Javadocs also are documented before each test.
+
+Section 2. Describe test cases that were correctly implemented, and reasoning. [5 Points]  
+	The @BeforeClass creation method of the test text files is done correctly, and the files are created without issue inside of a subdirectory.  Contents of the text files are filled as intended using FileWriter.  
+	The loadSerialDB test calls loadReviews with a test text filepath, and then calls loadserialDB and then tests that the database size is now 1.  
+	The classifyReviewTest creates a new movieReview object, and calls classifyReview and confirms that the classification is correct.  There is only one condition tested, may want to test both positive and negative reviews to confirm all classifications work.
+	The readReview test creates a movieReview object from a testfile.  It then calls the getText method to confirm that the text stored is equivalent to the text in the file.  
+	The loadReview test calls loadreviews on the test subdirectory, and it loads each test file in that directory into the database as a movieReview object.  It confirms all reviews were added.
+	The searchByID test calls searchByID, and then compares it with the getID of that object.  IT tests that the ID given and the ID stored in the database match, and they do.
+	The searchBySubstring test calls searchBySubstring and stores it as a list.  It then compares that list to the text stored for that object.  They are equivalent.
+
+Section 3. Describe the test cases that were incorrectly implemented and add reasoning
+behind your description (e.g. does not run, trivial case, not reflecting the functionality
+...). For each, give an example on how they should have been implemented. [5 Points]
+	No cases are missing, but a couple of tests expect a different amount of reviews in the database.  I’m not clear on whether this is due to errors in the test file, or some corruption of the database file.  These methods are set up logically and clearly, but do fail for some reason:  loadReviews, deleteReviews, loadSerialDB, and saveSerialDB occasionally fail, but loadReviews and loadSerialDB also succeed on some runs.  The database saved after the test file runs has Test file 1 data still remaining, so it’s possibly the cause when I run deleteReview test, the database is one larger than expected, and the saveSerialDB test also returns a different number than is expected.  When the saveSerialDB is called, it expects 1 review, but the database size is 2 at this point.
+
+	May solve this in both cases by storing reviewHandler.database.size() in a variable, and then testing if the new contents are size - 1 or size + 1 instead of expecting set integers.
+
+Section 4. Describe the test cases that are missing. What is missing and how many test
+cases, and how they should have been implemented, in plain English. [5 points]
+	There should probably be an @After method that deletes the test files and directory from the system once the test finishes.  The temporary sub directory should have the folder contents assessed, emptied, and finally the directory should be deleted.
+
+
+Save the file and submit your review to the repository you are reviewing under
+git.txtstate.edu/CS3354/NetID.git in test/assign3 folder.
