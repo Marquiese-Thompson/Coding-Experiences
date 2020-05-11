@@ -16,13 +16,13 @@ import static java.awt.Image.SCALE_SMOOTH;
 
 public class DataPathDemo
 {
-
     public static void main(String [] args)
     {
         JFrame frame = new JFrame("Processor Datapath Demo 1.0");
         frame.setSize(500,250);
         //----------------------------------------------
 
+        // sets the opening screen up
         JPanel open_screen = new JPanel();
         open_screen.setBackground(Color.MAGENTA);
         open_screen.getBackground();
@@ -40,9 +40,10 @@ public class DataPathDemo
         label.setHorizontalAlignment(SwingConstants.CENTER);
         open_screen.add(label, BorderLayout.CENTER);
 
-        frame.add(open_screen);
-        frame.setVisible(true);
+        frame.add(open_screen); // adds the open screen to the frame
+        frame.setVisible(true); // shows the main screen
 
+        // after 3 seconds the opening screen is refreshed to the main menu
         try
         {
             Thread.sleep(3000);
@@ -52,17 +53,20 @@ public class DataPathDemo
             Thread.currentThread().interrupt();
         }
 
-        frame.remove(open_screen);
+        frame.remove(open_screen); // removes open screen
         frame.repaint(); // Refresh the app clearing the open screen
 
         //----------------------------------------------
 
+        // set up for the main menu
         JPanel menu = new JPanel();
         menu.setBackground(Color.white);
         menu.getBackground();
         menu.setLayout(new GridLayout(1,4));
 
         //----------------------------------------------
+
+        // setup for the Load instruction button and page
         JButton load = new JButton();
         load.add(new JLabel("Load instruction"));
         load.setPreferredSize(new Dimension(100,100));
@@ -71,9 +75,10 @@ public class DataPathDemo
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
 
-                frame.remove(menu);
-                frame.repaint();
+                frame.remove(menu); // clears the menu from the screen
+                frame.repaint(); // refreshes the screen
 
+                // set the stage for the instruction
                 JPanel Load_Path = new JPanel();
                 Load_Path.setBackground(Color.white);
                 Load_Path.getBackground();
@@ -92,6 +97,7 @@ public class DataPathDemo
 
                 JLabel datapath = new JLabel(layout);
 
+                // enables the user to draw the datapath
                 final JPanel[] draw = {new JPanel()};
                 JButton next = new JButton("Draw Path");
                 next.setActionCommand("Draw Path");
@@ -137,6 +143,7 @@ public class DataPathDemo
                     }
                 });
 
+                // goes back to the main menu
                 JPanel Back_button = new JPanel();
                 Back_button.setLayout(new BorderLayout());
                 JButton back = new JButton("Back");
@@ -152,6 +159,7 @@ public class DataPathDemo
                     }
                 });
 
+                // shows the correct path
                 JButton correct = new JButton("Show Path");
                 correct.setActionCommand("path");
                 correct.addActionListener(new ActionListener() {
@@ -181,12 +189,14 @@ public class DataPathDemo
                 Load_Path.add(instruct,BorderLayout.WEST);
                 Load_Path.add(Back_button,BorderLayout.PAGE_END);
 
-                frame.add(Load_Path);
-                frame.setVisible(true);
+                frame.add(Load_Path); // adds the Load path panel to the frame
+                frame.setVisible(true); // shows the option
             }
         });
 
         //----------------------------------------------
+
+        // setup for the Store instruction button and page
         JButton Store = new JButton();
         Store.add(new JLabel("Store instruction"));
         Store.setPreferredSize(new Dimension(100,100));
@@ -195,9 +205,10 @@ public class DataPathDemo
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
 
-                frame.remove(menu);
-                frame.repaint();
+                frame.remove(menu); // clears the menu from the screen
+                frame.repaint(); // refreshes the screen
 
+                // set the stage for the instruction
                 JPanel Store_Path = new JPanel();
                 Store_Path.setBackground(Color.white);
                 Store_Path.getBackground();
@@ -216,6 +227,7 @@ public class DataPathDemo
 
                 JLabel datapath = new JLabel(layout);
 
+                // enables the user to draw the datapath
                 final JPanel[] draw = {new JPanel()};
                 JButton next = new JButton("Draw Path");
                 next.setActionCommand("Draw Path");
@@ -261,6 +273,7 @@ public class DataPathDemo
                     }
                 });
 
+                // goes back to the main menu
                 JPanel Back_button = new JPanel();
                 Back_button.setLayout(new BorderLayout());
                 JButton back = new JButton("Back");
@@ -276,6 +289,7 @@ public class DataPathDemo
                     }
                 });
 
+                // shows the correct path
                 JButton correct = new JButton("Show Path");
                 correct.setActionCommand("path");
                 correct.addActionListener(new ActionListener() {
@@ -305,12 +319,14 @@ public class DataPathDemo
                 Store_Path.add(instruct,BorderLayout.WEST);
                 Store_Path.add(Back_button,BorderLayout.PAGE_END);
 
-                frame.add(Store_Path);
-                frame.setVisible(true);
+                frame.add(Store_Path); // adds the Store path panel to the frame
+                frame.setVisible(true); // shows the option
             }
         });
 
         //----------------------------------------------
+
+        // setup for the branch instruction button and page
         JButton Branch = new JButton();
         Branch.add(new JLabel("Branch instruction"));
         Branch.setPreferredSize(new Dimension(100,100));
@@ -319,9 +335,10 @@ public class DataPathDemo
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
 
-                frame.remove(menu);
-                frame.repaint();
+                frame.remove(menu); // clears the menu from the screen
+                frame.repaint(); // refreshes the screen
 
+                // set the stage for the instruction
                 JPanel Branch_Path = new JPanel();
                 Branch_Path.setBackground(Color.white);
                 Branch_Path.getBackground();
@@ -340,6 +357,7 @@ public class DataPathDemo
 
                 JLabel datapath = new JLabel(layout);
 
+                // enables the user to draw the datapath
                 final JPanel[] draw = {new JPanel()};
                 JButton next = new JButton("Draw Path");
                 next.setActionCommand("Draw Path");
@@ -385,6 +403,7 @@ public class DataPathDemo
                     }
                 });
 
+                // goes back to the main menu
                 JPanel Back_button = new JPanel();
                 Back_button.setLayout(new BorderLayout());
                 JButton back = new JButton("Back");
@@ -400,6 +419,7 @@ public class DataPathDemo
                     }
                 });
 
+                // shows the correct path
                 JButton correct = new JButton("Show Path");
                 correct.setActionCommand("path");
                 correct.addActionListener(new ActionListener() {
@@ -430,12 +450,14 @@ public class DataPathDemo
                 Branch_Path.add(Back_button,BorderLayout.PAGE_END);
 
 
-                frame.add(Branch_Path);
-                frame.setVisible(true);
+                frame.add(Branch_Path); // adds the Branch path panel to the frame
+                frame.setVisible(true); // shows the option
             }
         });
 
         //----------------------------------------------
+
+        // setup for the add instruction button and page
         JButton Add = new JButton();
         Add.add(new JLabel("Add instruction"));
         Add.setPreferredSize(new Dimension(100,100));
@@ -444,9 +466,11 @@ public class DataPathDemo
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
 
-                frame.remove(menu);
-                frame.repaint();
+                frame.remove(menu); // clears the menu from the screen
+                frame.repaint(); // refreshes the screen
 
+
+                // set the stage for the instruction
                 JPanel Add_Path = new JPanel();
                 Add_Path.setBackground(Color.white);
                 Add_Path.getBackground();
@@ -465,6 +489,7 @@ public class DataPathDemo
 
                 JLabel datapath = new JLabel(layout);
 
+                // enables the user to draw the datapath
                 final JPanel[] draw = {new JPanel()};
                 JButton next = new JButton("Draw Path");
                 next.setActionCommand("Draw Path");
@@ -510,6 +535,7 @@ public class DataPathDemo
                     }
                 });
 
+                // goes back to the main menu
                 JPanel Back_button = new JPanel();
                 Back_button.setLayout(new BorderLayout());
                 JButton back = new JButton("Back");
@@ -525,6 +551,7 @@ public class DataPathDemo
                     }
                 });
 
+                // shows the correct path
                 JButton correct = new JButton("Show Path");
                 correct.setActionCommand("path");
                 correct.addActionListener(new ActionListener() {
@@ -554,8 +581,8 @@ public class DataPathDemo
                 Add_Path.add(instruct,BorderLayout.WEST);
                 Add_Path.add(Back_button,BorderLayout.PAGE_END);
 
-                frame.add(Add_Path);
-                frame.setVisible(true);
+                frame.add(Add_Path); // adds the Add path panel to the frame
+                frame.setVisible(true); // shows the option
             }
         });
 
